@@ -18,17 +18,19 @@ Participate in the property-buying process through the intuitive buy-in UI and s
 
 ## How to run the project
 
-theres `src/config.ts` file that is hidden (inside .gitignore file), that his structure is:
+Create `src/config.ts` (ignored by git) with:
 
 ```ts
 export default {
-	CODE_PREFIX: <string> // required,
-	PEER_SERVER_HOST: <string?>, // optional
-	PEER_SERVER_PORT: <number?>, // optional, default 443
-	PEER_SECURE: <boolean?>, // optional, default false
-	PEER_DEBUG_LEVEL: <number?>, // optional, default 0
+	CODE_PREFIX: "<your-prefix>", // required salt for room codes
+	PEER_SERVER_HOST: "<peer-host>", // optional, default 0.peerjs.com
+	PEER_SERVER_PORT: <number>, // optional, default 443
+	PEER_SECURE: <boolean>, // optional, default false
+	PEER_DEBUG_LEVEL: <number>, // optional, default 0
 };
 ```
+
+For a custom PeerJS server, set `PEER_SERVER_HOST` to your domain, `PEER_SERVER_PORT` to your TLS port (typically 443), and `PEER_SECURE` to `true`. Use a unique `CODE_PREFIX` to avoid collisions with other rooms on shared hosts.
 
 ## Credits
 
@@ -41,16 +43,16 @@ Main Theme : https://youtu.be/NaH_BiPeZ80
 
 #### Sound Effects:
 
--   Rolling Dice: https://youtu.be/rVjCSaXhZTs
--   Buying: https://youtu.be/IVjC5fTeubA
--   Dying: https://youtu.be/_asNhzXq72w
--   Winning: https://youtu.be/K0ZNtpTYKpI
--   Notification: https://youtu.be/84frnbTWGis
--   Walking: https://youtu.be/7skwR49UhqA
--   Jail: https://youtu.be/h2CTMrzxe24
--   Money: https://www.epidemicsound.com/track/oKEES3Rkmk/
--   Swipe: https://youtu.be/4-lY0NT-bJs
--   Clicking: https://youtu.be/3c-yEJYQcgM
+- Rolling Dice: https://youtu.be/rVjCSaXhZTs
+- Buying: https://youtu.be/IVjC5fTeubA
+- Dying: https://youtu.be/_asNhzXq72w
+- Winning: https://youtu.be/K0ZNtpTYKpI
+- Notification: https://youtu.be/84frnbTWGis
+- Walking: https://youtu.be/7skwR49UhqA
+- Jail: https://youtu.be/h2CTMrzxe24
+- Money: https://www.epidemicsound.com/track/oKEES3Rkmk/
+- Swipe: https://youtu.be/4-lY0NT-bJs
+- Clicking: https://youtu.be/3c-yEJYQcgM
 
 Soundtrakcs Where edited using Adobe Audition
 
@@ -78,12 +80,12 @@ As the developer of this Monopoly game project, it is essential to clarify the f
 2. Advanced Server Display [Event Logs, Player Statistics, Memory and Network Use]
 3. Advanced Game Mode - Economic System & Rebuy Street from Owner
 4. Firestore Usage:
-    1. Score System
-    2. Players LeaderBoard
-    3. Search for Player Statistics
+   1. Score System
+   2. Players LeaderBoard
+   3. Search for Player Statistics
 5. Responsive UI:
-    1. Mobile Design
-    2. 3D Game Version
+   1. Mobile Design
+   2. 3D Game Version
 
 ## Pictures and Videos of the game!
 

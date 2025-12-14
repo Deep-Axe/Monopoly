@@ -1,6 +1,6 @@
-import RailIcon from "../../../public/rails.png";
-import ElectricityIcon from "../../../public/elects.png";
-import WaterIcon from "../../../public/water.png";
+const RAIL_ICON = "/rails.png";
+const ELECTRICITY_ICON = "/elects.png";
+const WATER_ICON = "/water.png";
 
 export interface StreetDisplayInfo {
     title: string;
@@ -137,7 +137,7 @@ function RailroadCard({ args }: { args: RailroadDisplayInfo }) {
             <div data-clear>
                 <img
                     data-type="rail"
-                    src={RailIcon.replace("/public", "")}
+                    src={RAIL_ICON}
                     alt=""
                 />
                 <h3>{args.title}</h3>
@@ -178,9 +178,7 @@ function UtilityCard({ args }: { args: UtilitiesDisplayInfo }) {
                     <img
                         data-type={args.type}
                         src={
-                            args.type === "electricity"
-                                ? ElectricityIcon.replace("/public", "")
-                                : WaterIcon.replace("/public", "")
+                            args.type === "electricity" ? ELECTRICITY_ICON : WATER_ICON
                         }
                         alt=""
                     />

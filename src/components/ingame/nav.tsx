@@ -1,10 +1,10 @@
-import PlayersIcon from "../../../public/players.png";
-import ChatIcon from "../../../public/chat.png";
-import NChatIcon from "../../../public/chat_new.png";
-import LeaveIcon from "../../../public/leave1.png";
-import PropretiesIcon from "../../../public/proprety.png";
-import SettingsIcon from "../../../public/settings.png";
-import MonopolyIcon from "../../../public/icon.png";
+const PLAYERS_ICON = "/players.png";
+const CHAT_ICON = "/chat.png";
+const NEW_CHAT_ICON = "/chat_new.png";
+const LEAVE_ICON = "/leave1.png";
+const PROPRETIES_ICON = "/proprety.png";
+const SETTINGS_ICON = "/settings.png";
+const MONOPOLY_ICON = "/icon.png";
 
 import { forwardRef, useState, useImperativeHandle, useEffect, useRef } from "react";
 import { Player } from "../../assets/player.ts";
@@ -88,9 +88,9 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                 const iconElement = document.getElementById("chatIconChange") as HTMLDivElement;
                 const imageElement = iconElement.querySelector("img") as HTMLImageElement;
                 imageElement.style.animation = "spin3 2s cubic-bezier(.68,.05,.49,.95) infinite";
-                imageElement.src = NChatIcon.replace("/public", "");
+                imageElement.src = NEW_CHAT_ICON;
                 iconElement.onclick = () => {
-                    imageElement.src = ChatIcon.replace("/public", "");
+                    imageElement.src = CHAT_ICON;
                     imageElement.style.animation = "";
                     SetTab(2);
                     iconElement.onclick = () => {
@@ -133,7 +133,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
     return (
         <nav className="main">
             <nav className="header">
-                <img style={{ marginTop: 75 }} className="header" src={MonopolyIcon.replace("public/", "")} />
+                <img style={{ marginTop: 75 }} className="header" src={MONOPOLY_ICON} />
                 <div className="upper">
                     <div
                         key={"ingame-nav-header-0"}
@@ -142,7 +142,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                         data-tooltip-hover="players"
                         className="button"
                     >
-                        <img src={PlayersIcon.replace("public/", "")} alt="" />
+                        <img src={PLAYERS_ICON} alt="" />
                     </div>
 
                     <div
@@ -152,7 +152,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                         data-tooltip-hover="propreties"
                         className="button"
                     >
-                        <img src={PropretiesIcon.replace("public/", "")} alt="" />
+                        <img src={PROPRETIES_ICON} alt="" />
                     </div>
 
                     <div
@@ -163,7 +163,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                         className="button"
                         id="chatIconChange"
                     >
-                        <img src={ChatIcon.replace("public/", "")} alt="" />
+                        <img src={CHAT_ICON} alt="" />
                     </div>
                     <div
                         key={"ingame-nav-header-3"}
@@ -186,7 +186,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                             data-tooltip-hover="server"
                             className="button"
                         >
-                            <img src="server.png" alt="" />
+                            <img src="/server.png" alt="" />
                         </div>
                     ) : (
                         <></>
@@ -198,7 +198,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                         data-tooltip-hover="monopolySettings"
                         className="button"
                     >
-                        <img src={SettingsIcon.replace("public/", "")} alt="" />
+                        <img src={SETTINGS_ICON} alt="" />
                     </div>
                     <div
                         key={"ingame-nav-header-7"}
@@ -209,7 +209,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                             document.location.reload();
                         }}
                     >
-                        <img src={LeaveIcon.replace("public/", "")} alt="" />
+                        <img src={LEAVE_ICON} alt="" />
                     </div>
                 </div>
             </nav>

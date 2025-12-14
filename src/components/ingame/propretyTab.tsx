@@ -1,6 +1,6 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
-import HouseIcon from "../../../public/h.png";
-import HotelIcon from "../../../public/ho.png";
+const HOUSE_ICON = "/h.png";
+const HOTEL_ICON = "/ho.png";
 import { translateGroup } from "./streetCard.tsx";
 import CardViewer from "./cardViewer.tsx";
 import monopolyJSON from "../../assets/monopoly.json";
@@ -173,11 +173,11 @@ const propretyTab = forwardRef<PropretyTabRef, PropretyTabProps>((props, ref) =>
                             </h3>
                             <div>
                                 {v.count == "h" ? (
-                                    <img src={HotelIcon.replace("public/", "")} alt="" />
+                                    <img src={HOTEL_ICON} alt="" />
                                 ) : typeof v.count === "number" && v.count > 0 ? (
                                     <>
                                         <p>{v.count}</p>
-                                        <img src={HouseIcon.replace("public/", "")} alt="" />
+                                        <img src={HOUSE_ICON} alt="" />
                                     </>
                                 ) : (
                                     <></>

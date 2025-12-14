@@ -9,6 +9,13 @@ import monopolyJSON from "../../assets/monopoly.json";
 import { MonopolySettings, MonopolyModes, historyAction, history, GameTrading, MonopolyMode } from "../../assets/types.ts";
 import { CookieManager } from "../../assets/cookieManager.ts";
 function App({ socket, name, server }: { socket: Socket; name: string; server: Server | undefined }) {
+    const defaultSettings: MonopolySettings = {
+        gameEngine: "2d",
+        accessibility: [45, 5, false, false, false],
+        audio: [100, 100, 25],
+        notifications: false,
+    };
+
     const [clients, SetClients] = useState<Map<string, Player>>(new Map());
     const players = Array.from(clients.values());
 
@@ -40,8 +47,12 @@ function App({ socket, name, server }: { socket: Socket; name: string; server: S
 
     useEffect(() => {
         const settings_interval = setInterval(() => {
-            const parsedCookie = JSON.parse(decodeURIComponent(CookieManager.get("monopolySettings") as string))["monopolySettings"];
-            SetSettings(parsedCookie);
+            try {
+                const parsedCookie = JSON.parse(decodeURIComponent(CookieManager.get("monopolySettings") as string));
+                SetSettings(parsedCookie.settings ?? defaultSettings);
+            } catch {
+                SetSettings(defaultSettings);
+            }
         }, 1000);
         return () => {
             clearInterval(settings_interval);
@@ -75,10 +86,15 @@ function App({ socket, name, server }: { socket: Socket; name: string; server: S
         });
     }
     useEffect(() => {
-        let settings: MonopolySettings | undefined = undefined;
+        let settings: MonopolySettings | undefined = defaultSettings;
 
         const settings_interval = setInterval(() => {
-            settings = JSON.parse(decodeURIComponent(CookieManager.get("monopolySettings") as string))["monopolySettings"];
+            try {
+                const parsedCookie = JSON.parse(decodeURIComponent(CookieManager.get("monopolySettings") as string));
+                settings = parsedCookie.settings ?? defaultSettings;
+            } catch {
+                settings = defaultSettings;
+            }
         }, 1000);
 
         function mouseMove(e: MouseEvent) {

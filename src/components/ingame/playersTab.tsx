@@ -1,11 +1,11 @@
 import { useState, forwardRef, useImperativeHandle, useEffect } from "react";
 import { Socket } from "../../assets/sockets.ts";
 import { Player } from "../../assets/player.ts";
-import DiceIcon from "../../../public/roll.png";
+const DICE_ICON = "/roll.png";
 import { translateGroup } from "./streetCard.tsx";
 import monopolyJSON from "../../assets/monopoly.json";
-import HouseIcon from "../../../public/h.png";
-import HotelIcon from "../../../public/ho.png";
+const HOUSE_ICON = "/h.png";
+const HOTEL_ICON = "/ho.png";
 import { MonopolyCookie, MonopolySettings } from "../../assets/types.ts";
 // @ts-ignore
 import { CookieManager } from "../../assets/cookieManager.ts";
@@ -122,11 +122,11 @@ const playersTab = forwardRef<PlayersTabRef, PlayersTabProps>((props, ref) => {
                                         </h3>
                                         <div>
                                             {v.count == "h" ? (
-                                                <img src={HotelIcon.replace("public/", "")} alt="" />
+                                                <img src={HOTEL_ICON} alt="" />
                                             ) : typeof v.count === "number" && v.count > 0 ? (
                                                 <>
                                                     <p>{v.count}</p>
-                                                    <img src={HouseIcon.replace("public/", "")} alt="" />
+                                                    <img src={HOUSE_ICON} alt="" />
                                                 </>
                                             ) : (
                                                 <></>
@@ -165,7 +165,7 @@ const playersTab = forwardRef<PlayersTabRef, PlayersTabProps>((props, ref) => {
                                     <p key={60}>
                                         {settings?.accessibility[2] ? `[${v.id}]` : ""} {v.username}
                                     </p>
-                                    {v.id === props.currentTurn ? <img src={DiceIcon.replace("public/", "")} /> : <></>}
+                                    {v.id === props.currentTurn ? <img src={DICE_ICON} /> : <></>}
                                     {v.getoutCards > 0 ? (
                                         <p key={61} className="orange">
                                             {v.getoutCards}

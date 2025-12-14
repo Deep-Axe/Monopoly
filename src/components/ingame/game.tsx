@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import RollIcon from "../../../public/roll.png";
-import HouseIcon from "../../../public/h.png";
-import HotelIcon from "../../../public/ho.png";
+const ROLL_ICON = "/roll.png";
+const HOUSE_ICON = "/h.png";
+const HOTEL_ICON = "/ho.png";
 import { Player } from "./../../assets/player.ts";
 import { Socket } from "../../assets/sockets.ts";
 import StreetCard, { StreetDisplayInfo, UtilitiesDisplayInfo, RailroadDisplayInfo, translateGroup } from "./streetCard.tsx";
@@ -654,13 +654,13 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                                 case 4:
                                     for (let index = 0; index < state; index++) {
                                         const image = document.createElement("img");
-                                        image.src = HouseIcon.replace("public/", "");
+                                        image.src = HOUSE_ICON;
                                         st.appendChild(image);
                                     }
                                     break;
                                 case "h":
                                     const image = document.createElement("img");
-                                    image.src = HotelIcon.replace("public/", "");
+                                    image.src = HOTEL_ICON;
                                     st.appendChild(image);
                                     break;
 
@@ -1427,7 +1427,7 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                         )}
                         <button data-button-type="roll" aria-disabled={false}>
                             <p>ROLL THE </p>
-                            <img style={{ marginLeft: 10 }} src={RollIcon.replace("public/", "")} />
+                            <img style={{ marginLeft: 10 }} src={ROLL_ICON} />
                         </button>
                         <button data-button-type="pay" data-tooltip-hover="pay" aria-disabled={true}>
                             <img src="pay1.png" />
@@ -1610,11 +1610,11 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                                                                 </h3>
                                                                 <div>
                                                                     {v.count == "h" ? (
-                                                                        <img src={HotelIcon.replace("public/", "")} alt="" />
+                                                                        <img src={HOTEL_ICON} alt="" />
                                                                     ) : typeof v.count === "number" && v.count > 0 ? (
                                                                         <>
                                                                             <p>{v.count}</p>
-                                                                            <img src={HouseIcon.replace("public/", "")} alt="" />
+                                                                            <img src={HOUSE_ICON} alt="" />
                                                                         </>
                                                                     ) : (
                                                                         <></>
@@ -1659,11 +1659,11 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                                                                 </h3>
                                                                 <div>
                                                                     {v.count == "h" ? (
-                                                                        <img src={HotelIcon.replace("public/", "")} alt="" />
+                                                                        <img src={HOTEL_ICON} alt="" />
                                                                     ) : typeof v.count === "number" && v.count > 0 ? (
                                                                         <>
                                                                             <p>{v.count}</p>
-                                                                            <img src={HouseIcon.replace("public/", "")} alt="" />
+                                                                            <img src={HOUSE_ICON} alt="" />
                                                                         </>
                                                                     ) : (
                                                                         <></>
@@ -1727,11 +1727,11 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                                                                     </h3>
                                                                     <div>
                                                                         {v.count == "h" ? (
-                                                                            <img src={HotelIcon.replace("public/", "")} alt="" />
+                                                                            <img src={HOTEL_ICON} alt="" />
                                                                         ) : typeof v.count === "number" && v.count > 0 ? (
                                                                             <>
                                                                                 <p>{v.count}</p>
-                                                                                <img src={HouseIcon.replace("public/", "")} alt="" />
+                                                                                <img src={HOUSE_ICON} alt="" />
                                                                             </>
                                                                         ) : (
                                                                             <></>
@@ -1794,11 +1794,11 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                                                                     </h3>
                                                                     <div>
                                                                         {v.count == "h" ? (
-                                                                            <img src={HotelIcon.replace("public/", "")} alt="" />
+                                                                            <img src={HOTEL_ICON} alt="" />
                                                                         ) : typeof v.count === "number" && v.count > 0 ? (
                                                                             <>
                                                                                 <p>{v.count}</p>
-                                                                                <img src={HouseIcon.replace("public/", "")} alt="" />
+                                                                                <img src={HOUSE_ICON} alt="" />
                                                                             </>
                                                                         ) : (
                                                                             <></>

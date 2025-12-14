@@ -73,27 +73,7 @@ export default function settingsNav() {
         <>
             <h3 style={{ textAlign: "center" }}>Settings</h3>
             <div className="scroll">
-                <div className="settingsItem">
-                    <p>Game Engine </p>
-                    <div>
-                        <select name="" id="">
-                            <option>2D</option>
-                            <option>3D</option>
-                        </select>
-                    </div>
-                </div>
-                <p
-                    style={{
-                        marginBlock: 0,
-                        marginInline: 10,
-                        fontSize: 12,
-                        opacity: 0.5,
-                    }}
-                >
-                    3d isnt developed yet{" "}
-                </p>
-                <br />
-                <hr />
+                {/* Game engine selection removed because only 2D exists */}
                 <h2>Accessibility</h2>
                 <div>
                     <div className="settingsItem">
