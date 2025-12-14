@@ -11,6 +11,16 @@ const peerOptions: PeerOptions = {
 	port: Config.PEER_SERVER_PORT ?? 443,
 	// @ts-ignore
 	host: Config.PEER_SERVER_HOST ?? undefined,
+	// Explicit STUN list to improve NAT traversal for public connections
+	config: {
+		iceServers: [
+			{ urls: "stun:stun.l.google.com:19302" },
+			{ urls: "stun:stun1.l.google.com:19302" },
+			{ urls: "stun:stun2.l.google.com:19302" },
+			{ urls: "stun:stun3.l.google.com:19302" },
+			{ urls: "stun:stun4.l.google.com:19302" },
+		],
+	},
 };
 
 export function io(uri: string): Promise<Socket> {
@@ -24,7 +34,7 @@ export function io(uri: string): Promise<Socket> {
 
 			setTimeout(() => {
 				reject("the server took too long to respond");
-			}, 5000);
+			}, 10000);
 			dataConnection.on("open", () => {
 				// Create a new Socket instance with the data connection.
 				const sock = new Socket(dataConnection);
@@ -127,6 +137,11 @@ export class Server {
 		this.renderFunction = () => {};
 		this.socket.on("open", async () => {
 			idf?.(this);
+		});
+
+		this.socket.on("error", (err) => {
+			this.logs.push(["peer-error", err?.message ?? err]);
+			this.renderFunction(this.logs);
 		});
 
 		this.socket.on("connection", (dataConnection) => {

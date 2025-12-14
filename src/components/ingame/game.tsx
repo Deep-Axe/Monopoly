@@ -5,6 +5,7 @@ const HOUSE_ICON = asset("h.png");
 const HOTEL_ICON = asset("ho.png");
 import { Player } from "./../../assets/player.ts";
 import { Socket } from "../../assets/sockets.ts";
+import { audio } from "../../assets/audio.ts";
 import StreetCard, { StreetDisplayInfo, UtilitiesDisplayInfo, RailroadDisplayInfo, translateGroup } from "./streetCard.tsx";
 import monopolyJSON from "../../assets/monopoly.json";
 import ChacneCard, { ChanceDisplayInfo } from "./specialCards.tsx";
@@ -141,10 +142,10 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
     }
     function swipeSound() {
         const _settings = (JSON.parse(decodeURIComponent(CookieManager.get("monopolySettings") as string)) as MonopolyCookie).settings;
-        let audio = new Audio("./card.mp3");
-        audio.volume = ((_settings?.audio[1] ?? 100) / 100) * ((_settings?.audio[0] ?? 100) / 100);
-        audio.loop = false;
-        audio.play();
+        let audioEl = audio("card.mp3");
+        audioEl.volume = ((_settings?.audio[1] ?? 100) / 100) * ((_settings?.audio[0] ?? 100) / 100);
+        audioEl.loop = false;
+        audioEl.play();
     }
 
     useImperativeHandle(ref, () => ({
@@ -176,10 +177,10 @@ const MonopolyGame = forwardRef<MonopolyGameRef, MonopolyGameProps>((prop, ref) 
                 ) {
                     function clickSound() {
                         const _settings = (JSON.parse(decodeURIComponent(CookieManager.get("monopolySettings") as string)) as MonopolyCookie).settings;
-                        let audio = new Audio("./click.mp3");
-                        audio.volume = ((_settings?.audio[1] ?? 100) / 100) * ((_settings?.audio[0] ?? 100) / 100);
-                        audio.loop = false;
-                        audio.play();
+                        let audioEl = audio("click.mp3");
+                        audioEl.volume = ((_settings?.audio[1] ?? 100) / 100) * ((_settings?.audio[0] ?? 100) / 100);
+                        audioEl.loop = false;
+                        audioEl.play();
                     }
                     function func() {
                         if (advanced) {

@@ -1,6 +1,7 @@
 import { forwardRef, useImperativeHandle } from "react";
 import { MonopolyCookie } from "../assets/types";
 import { CookieManager } from "../assets/cookieManager";
+import { audio } from "../assets/audio";
 
 interface NotificatorProps {}
 export interface NotificatorRef {
@@ -73,11 +74,11 @@ const NotifyElement = forwardRef<NotificatorRef, NotificatorProps>(
 							)
 						) as MonopolyCookie
 					).settings;
-					let audio = new Audio("./notifications.mp3");
-					audio.volume =
+					let audioEl = audio("notifications.mp3");
+					audioEl.volume =
 						((_settings?.audio[1] ?? 100) / 100) *
 						((_settings?.audio[0] ?? 100) / 100);
-					audio.play();
+					audioEl.play();
 				}
 			},
 			dialog(build_dialog_function, soundtrack) {
@@ -129,21 +130,21 @@ const NotifyElement = forwardRef<NotificatorRef, NotificatorProps>(
 
 				switch (soundtrack) {
 					case "loosing":
-						var audio = new Audio("./dying.mp3");
-						audio.volume =
+						var audioEl = audio("dying.mp3");
+						audioEl.volume =
 							0.16 *
 							((_settings?.audio[1] ?? 100) / 100) *
 							((_settings?.audio[0] ?? 100) / 100);
-						audio.loop = false;
-						audio.play();
+						audioEl.loop = false;
+						audioEl.play();
 						break;
 					case "winning":
-						var audio = new Audio("./winning.mp3");
-						audio.volume =
+						var audioEl = audio("winning.mp3");
+						audioEl.volume =
 							((_settings?.audio[1] ?? 100) / 100) *
 							((_settings?.audio[0] ?? 100) / 100);
-						audio.loop = false;
-						audio.play();
+						audioEl.loop = false;
+						audioEl.play();
 						break;
 					default:
 						break;
