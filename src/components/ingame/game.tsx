@@ -1,7 +1,8 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-const ROLL_ICON = "/roll.png";
-const HOUSE_ICON = "/h.png";
-const HOTEL_ICON = "/ho.png";
+const asset = (p: string) => import.meta.env.BASE_URL + p;
+const ROLL_ICON = asset("roll.png");
+const HOUSE_ICON = asset("h.png");
+const HOTEL_ICON = asset("ho.png");
 import { Player } from "./../../assets/player.ts";
 import { Socket } from "../../assets/sockets.ts";
 import StreetCard, { StreetDisplayInfo, UtilitiesDisplayInfo, RailroadDisplayInfo, translateGroup } from "./streetCard.tsx";

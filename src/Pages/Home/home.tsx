@@ -20,6 +20,8 @@ import { TranslateCode } from "../../assets/code.ts";
 import { CookieManager } from "../../assets/cookieManager.ts";
 
 export default function Home() {
+    const asset = (p: string) => import.meta.env.BASE_URL + p;
+
     var cookie: MonopolyCookie;
     try {
         const getCookieString = CookieManager.get("monopolySettings");
@@ -222,7 +224,7 @@ export default function Home() {
                         }}
                         data-tooltip-hover="play"
                     >
-                        <img src="/icon.png" alt="" />
+                        <img src={asset("icon.png")} alt="" />
                     </button>
                     <button
                         data-select={tabIndex === 1}
@@ -231,7 +233,7 @@ export default function Home() {
                         }}
                         data-tooltip-hover="server"
                     >
-                        <img src="/server.png" alt="" />
+                        <img src={asset("server.png")} alt="" />
                     </button>
                     <button
                         data-select={tabIndex === 2}
@@ -241,7 +243,7 @@ export default function Home() {
                         disabled={true}
                         data-tooltip-hover="account"
                     >
-                        <img src="/human.png" alt="" />
+                        <img src={asset("human.png")} alt="" />
                     </button>
                     <br />
                     <button
@@ -251,7 +253,7 @@ export default function Home() {
                         }}
                         data-tooltip-hover="monopolySettings"
                     >
-                        <img src="/settings.png" alt="" />
+                        <img src={asset("settings.png")} alt="" />
                     </button>
                 </nav>
                 <main>
@@ -398,7 +400,7 @@ export default function Home() {
                                 <p
                                     style={{ fontSize: 9, cursor: "pointer", opacity: 0.8, width: "fit-content" }}
                                     onClick={() => {
-                                        document.location.href = "/";
+                                        document.location.href = import.meta.env.BASE_URL;
                                     }}
                                 >
                                     @Deep-Axe - 12.14.25

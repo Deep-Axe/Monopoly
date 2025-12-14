@@ -4,7 +4,7 @@ export default function Gallery() {
     useEffect(() => {
         document.title = "Monopoly Gallery";
     }, []);
-    const prefix = "/Monopoly/gallery/";
+    const prefix = import.meta.env.BASE_URL + "gallery/";
     return (
         <main>
             <div className="gallery-main">

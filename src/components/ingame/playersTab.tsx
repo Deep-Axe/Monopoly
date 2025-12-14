@@ -1,11 +1,12 @@
 import { useState, forwardRef, useImperativeHandle, useEffect } from "react";
 import { Socket } from "../../assets/sockets.ts";
 import { Player } from "../../assets/player.ts";
-const DICE_ICON = "/roll.png";
+const asset = (p: string) => import.meta.env.BASE_URL + p;
+const DICE_ICON = asset("roll.png");
 import { translateGroup } from "./streetCard.tsx";
 import monopolyJSON from "../../assets/monopoly.json";
-const HOUSE_ICON = "/h.png";
-const HOTEL_ICON = "/ho.png";
+const HOUSE_ICON = asset("h.png");
+const HOTEL_ICON = asset("ho.png");
 import { MonopolyCookie, MonopolySettings } from "../../assets/types.ts";
 // @ts-ignore
 import { CookieManager } from "../../assets/cookieManager.ts";

@@ -1,6 +1,7 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
-const HOUSE_ICON = "/h.png";
-const HOTEL_ICON = "/ho.png";
+const asset = (p: string) => import.meta.env.BASE_URL + p;
+const HOUSE_ICON = asset("h.png");
+const HOTEL_ICON = asset("ho.png");
 import { translateGroup } from "./streetCard.tsx";
 import CardViewer from "./cardViewer.tsx";
 import monopolyJSON from "../../assets/monopoly.json";

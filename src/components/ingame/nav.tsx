@@ -1,10 +1,11 @@
-const PLAYERS_ICON = "/players.png";
-const CHAT_ICON = "/chat.png";
-const NEW_CHAT_ICON = "/chat_new.png";
-const LEAVE_ICON = "/leave1.png";
-const PROPRETIES_ICON = "/proprety.png";
-const SETTINGS_ICON = "/settings.png";
-const MONOPOLY_ICON = "/icon.png";
+const asset = (p: string) => import.meta.env.BASE_URL + p;
+const PLAYERS_ICON = asset("players.png");
+const CHAT_ICON = asset("chat.png");
+const NEW_CHAT_ICON = asset("chat_new.png");
+const PROPRETIES_ICON = asset("proprety.png");
+const SETTINGS_ICON = asset("settings.png");
+const MONOPOLY_ICON = asset("icon.png");
+const LEAVE_ICON = asset("leave1.png");
 
 import { forwardRef, useState, useImperativeHandle, useEffect, useRef } from "react";
 import { Player } from "../../assets/player.ts";
@@ -186,7 +187,7 @@ const MonopolyNav = forwardRef<MonopolyNavRef, MonopolyNavProps>((prop, ref) => 
                             data-tooltip-hover="server"
                             className="button"
                         >
-                            <img src="/server.png" alt="" />
+                            <img src={asset("server.png")} alt="" />
                         </div>
                     ) : (
                         <></>

@@ -1,6 +1,7 @@
-const RAIL_ICON = "/rails.png";
-const ELECTRICITY_ICON = "/elects.png";
-const WATER_ICON = "/water.png";
+const asset = (p: string) => import.meta.env.BASE_URL + p;
+const RAIL_ICON = asset("rails.png");
+const ELECTRICITY_ICON = asset("elects.png");
+const WATER_ICON = asset("water.png");
 
 export interface StreetDisplayInfo {
     title: string;

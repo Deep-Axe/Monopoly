@@ -866,7 +866,7 @@ div.board {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 900px;
-    background-image: url("/board2.png");
+    background-image: url("/Monopoly/board2.png");
     background-size: cover;
     box-shadow: 0px 0px 0px 3px black;
     z-index: 0;
@@ -1341,12 +1341,12 @@ div.chance-card {
 }
 
 div.chance-card[data-b-image="chance"] {
-    background-image: url("/chance.png");
+    background-image: url("/Monopoly/chance.png");
     background-size: 80px;
 }
 
 div.chance-card[data-b-image="chest"] {
-    background-image: url("/special/chest.png");
+    background-image: url("/Monopoly/chest.png");
     background-size: 200px;
 }
 
@@ -1474,7 +1474,7 @@ img#moneyAnimations[data-anim="1"] {
     animation: moneyAnimations1 1s cubic-bezier(0.25, 1.44, 0.55, 1.01),
         moneyAnimations2 1s ease-out infinite,
         moneyAnimations3 1s cubic-bezier(0.61, 0.05, 0.96, 0.18);
-    background-image: url("/send2.png");
+    background-image: url("/Monopoly/send2.png");
     background-size: 80px;
     background-size: cover;
     opacity: 1;
@@ -1484,7 +1484,7 @@ img#moneyAnimations[data-anim="2"] {
     animation: moneyAnimations1 1s cubic-bezier(0.25, 1.44, 0.55, 1.01),
         moneyAnimations22 1s ease-out,
         moneyAnimations3 1s cubic-bezier(0.61, 0.05, 0.96, 0.18);
-    background-image: url("/recieve2.png");
+    background-image: url("/Monopoly/recieve2.png");
     background-size: 80px;
     background-position: center;
     opacity: 1;
