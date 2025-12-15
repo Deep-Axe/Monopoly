@@ -63,7 +63,7 @@ type PlayerJSON = {
 
 export async function main(playersCount: number, f?: (host: string, Server: Server) => void) {
 
-    const maxPlayers = playersCount > 0 ? Math.min(playersCount, 6) : 6;
+    const maxPlayers = Math.max(2, playersCount > 0 ? Math.min(playersCount, 6) : 6);
 
     interface Client {
         player: Player;

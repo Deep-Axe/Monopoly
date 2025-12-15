@@ -27,6 +27,21 @@ function App({ socket, name, server }: { socket: Socket; name: string; server: S
     const [selectedMode, SetMode] = useState<MonopolyMode>(MonopolyModes[0]);
     const [globalSettings, SetSettings] = useState<MonopolySettings>();
     const [mainTheme, SetTheme] = useState(buildAudio("main-theme.mp3"));
+
+    function ensureThemePlays() {
+        mainTheme.muted = false;
+        mainTheme.currentTime = 0;
+        const tryPlay = () => {
+            mainTheme.play().catch(() => {
+                const handler = () => {
+                    mainTheme.play().catch(() => {});
+                    document.removeEventListener("pointerdown", handler);
+                };
+                document.addEventListener("pointerdown", handler, { once: true });
+            });
+        };
+        tryPlay();
+    }
     const [startTIme, SetStartTime] = useState<Date>(new Date());
     const [histories, SetHistories] = useState<Array<historyAction>>([]);
 
@@ -36,7 +51,7 @@ function App({ socket, name, server }: { socket: Socket; name: string; server: S
         if (!gameStartedDisplay) return;
         // Sound Effect
         mainTheme.loop = true;
-        mainTheme.play();
+        ensureThemePlays();
 
         mainTheme.volume = 0.25;
         if (globalSettings !== undefined) {

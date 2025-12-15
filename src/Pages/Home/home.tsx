@@ -3,7 +3,7 @@ import Monopoly from "./monopoly.tsx";
 import "../../home.css";
 import { Server, Socket, io } from "../../assets/sockets.ts";
 import NotifyElement, { NotificatorRef } from "../../components/notificator.tsx";
-import { MonopolyCookie, User, botInitial } from "../../assets/types.ts";
+import { MonopolyCookie, User } from "../../assets/types.ts";
 import SettingsNav from "../../components/settingsNav.tsx";
 
 // import LoginScreen from "../../components/menu/loginscreen.tsx";
@@ -13,8 +13,6 @@ import JoinScreen from "../../components/menu/joinScreen.tsx";
 // import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import { main as onlineServer } from "../../assets/server.ts";
-import { main as botServer } from "../../assets/bot/server.ts";
-import { main as runBot } from "../../assets/bot/bot.ts";
 import Slider from "../../components/utils/slider.tsx";
 import { TranslateCode } from "../../assets/code.ts";
 import { CookieManager } from "../../assets/cookieManager.ts";
@@ -64,7 +62,7 @@ export default function Home() {
 
     // Server Stuff
     const [server, SetServer] = useState<Server | undefined>(undefined);
-    const [serverPCount, SetServerPCount] = useState<number>(6);
+    const [serverPCount, SetServerPCount] = useState<number>(2);
 
     useEffect(() => {
         document.title = "Monopoly";
@@ -161,55 +159,6 @@ export default function Home() {
         }
     }, []);
 
-    function startButtonClicked(bots: botInitial[]) {
-        try {
-            if (name.replace(" ", "").length === 0) {
-                notifyRef.current?.message("please add your name before joining", "info", 2);
-                return;
-            }
-
-            botServer(async (server) => {
-                SetDisabled(true);
-                const socket = await io(TranslateCode(server.code));
-                for (const x of bots) {
-                    runBot(TranslateCode(server.code), x);
-                }
-                socket.on("state", (args: number) => {
-                    switch (args) {
-                        case 0:
-                            SetSocket(socket);
-                            SetSignedIn(true);
-                            SetServer(server);
-                            SetDisabled(false);
-
-                            break;
-                        case 1:
-                            notifyRef.current?.message("the game has already begun", "error", 2, () => {
-                                SetDisabled(false);
-                            });
-                            socket.disconnect();
-                            break;
-                        case 2:
-                            notifyRef.current?.message("too many players on the server", "error", 2, () => {
-                                SetDisabled(false);
-                            });
-                            socket.disconnect();
-                            break;
-                        default:
-                            notifyRef.current?.message("unkown error", "error", 2, () => {
-                                SetDisabled(false);
-                            });
-                            socket.disconnect();
-
-                            break;
-                    }
-                });
-            });
-        } catch {
-            SetDisabled(false);
-        }
-    }
-
     return socket !== undefined && isSignedIn === true ? (
         <Monopoly socket={socket} name={name} server={server} />
     ) : (
@@ -234,16 +183,6 @@ export default function Home() {
                         data-tooltip-hover="server"
                     >
                         <img src={asset("server.png")} alt="" />
-                    </button>
-                    <button
-                        data-select={tabIndex === 2}
-                        onClick={() => {
-                            SetTab(2);
-                        }}
-                        disabled={true}
-                        data-tooltip-hover="account"
-                    >
-                        <img src={asset("human.png")} alt="" />
                     </button>
                     <br />
                     <button
@@ -360,7 +299,7 @@ export default function Home() {
                                                         SetServerPCount(parseInt(e.currentTarget.value));
                                                     }}
                                                     max={6}
-                                                    min={1}
+                                                    min={2}
                                                     defaultValue={serverPCount}
                                                     step={1}
                                                 />
@@ -410,9 +349,6 @@ export default function Home() {
                             <JoinScreen
                                 disabled={disabled}
                                 fbUser={fbUser}
-                                joinBots={(x) => {
-                                    startButtonClicked(x);
-                                }}
                                 joinViaCode={() => {
                                     joinButtonClicked();
                                 }}

@@ -11,6 +11,7 @@ const peerOptions: PeerOptions = {
 	port: Config.PEER_SERVER_PORT ?? 443,
 	// @ts-ignore
 	host: Config.PEER_SERVER_HOST ?? undefined,
+	key: "peerjs",
 	// Explicit STUN list to improve NAT traversal for public connections
 	config: {
 		iceServers: [
